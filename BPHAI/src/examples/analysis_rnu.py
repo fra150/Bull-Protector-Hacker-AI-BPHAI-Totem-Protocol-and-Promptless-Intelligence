@@ -10,8 +10,8 @@ import re
 from typing import Dict, List, Any, Tuple
 from collections import Counter
 
-from core.rnu import RootedNeuralUnit, RNUConfig, RNUType
-from core.orchestrator import ThreatLevel
+from ..core.rnu import RootedNeuralUnit, RNUConfig, RNUType
+from ..core.orchestrator import ThreatLevel
 
 
 class AnalysisRNU(RootedNeuralUnit):

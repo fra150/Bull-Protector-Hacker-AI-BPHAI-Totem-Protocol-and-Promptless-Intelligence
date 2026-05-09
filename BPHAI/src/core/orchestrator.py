@@ -12,7 +12,7 @@ from enum import Enum
 import time
 import json
 
-from core.rnu import RootedNeuralUnit, RNUType
+from .rnu import RootedNeuralUnit, RNUType
 
 
 class ThreatLevel(Enum):
