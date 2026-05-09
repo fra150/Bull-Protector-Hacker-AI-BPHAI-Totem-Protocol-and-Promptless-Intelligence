@@ -10,7 +10,7 @@ from typing import Dict, List, Any
 from unittest.mock import Mock, patch, MagicMock
 from src.bphai import BPHAI, BPHAIConfig
 from src.core.rnu import RootedNeuralUnit, RNUType, RNUConfig
-from src.core.orchestrator import BPHAIOrchestrator, ThreatLevel, ProcessingResult
+from src.core.orchestrator import BPHAIOrchestrator, ThreatLevel, AggregatedResponse
 from src.core.move_masking import MoveMasking, MaskingStrategy
 from src.examples.security_rnu import SecurityRNU
 from src.examples.analysis_rnu import AnalysisRNU
