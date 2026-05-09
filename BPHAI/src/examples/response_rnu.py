@@ -9,8 +9,8 @@ import hashlib
 import re
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
-from core.rnu import RootedNeuralUnit, RNUConfig, RNUType
-from core.orchestrator import ThreatLevel
+from ..core.rnu import RootedNeuralUnit, RNUConfig, RNUType
+from ..core.orchestrator import ThreatLevel
 
 
 class ResponseRNU(RootedNeuralUnit):

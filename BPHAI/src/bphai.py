@@ -10,12 +10,12 @@ import logging
 from typing import Dict, List, Any, Optional, Union
 from datetime import datetime
 from dataclasses import dataclass, asdict
-from core.orchestrator import BPHAIOrchestrator, ThreatLevel, AggregatedResponse
-from core.rnu import RootedNeuralUnit, RNUType, RNUConfig
-from core.move_masking import MoveMasking, MaskingStrategy
-from examples.security_rnu import SecurityRNU
-from examples.analysis_rnu import AnalysisRNU
-from examples.response_rnu import ResponseRNU
+from .core.orchestrator import BPHAIOrchestrator, ThreatLevel, AggregatedResponse
+from .core.rnu import RootedNeuralUnit, RNUType, RNUConfig
+from .core.move_masking import MoveMasking, MaskingStrategy
+from .examples.security_rnu import SecurityRNU
+from .examples.analysis_rnu import AnalysisRNU
+from .examples.response_rnu import ResponseRNU
 
 
 @dataclass
@@ -360,6 +360,7 @@ class BPHAI:
                 "configuration": asdict(self.config)
             },
             "system_health": "healthy",
+            "rnu_count": len(orchestrator_status.get("registered_rnus", {})),
             "statistics": self.stats.copy(),
             "orchestrator_status": orchestrator_status,
             "registered_rnus": [

@@ -10,8 +10,8 @@ import json
 import math
 from typing import Dict, List, Any
 
-from core.rnu import RootedNeuralUnit, RNUConfig, RNUType
-from core.orchestrator import ThreatLevel
+from ..core.rnu import RootedNeuralUnit, RNUConfig, RNUType
+from ..core.orchestrator import ThreatLevel
 
 
 class SecurityRNU(RootedNeuralUnit):

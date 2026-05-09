@@ -279,6 +279,29 @@ class MoveMasking:
         self.deception_history.clear()
         self.attack_patterns.clear()
     
+    def log_attack_attempt(self, threat_level: ThreatLevel, attack_type: str, 
+                          input_data: Dict[str, Any]) -> None:
+        """Log an attack attempt for analysis."""
+        log_entry = {
+            "timestamp": time.time(),
+            "threat_level": threat_level.name_str if hasattr(threat_level, 'name_str') else str(threat_level),
+            "attack_type": attack_type,
+            "input_size": len(json.dumps(input_data)) if input_data else 0
+        }
+        self.deception_history.append(log_entry)
+        
+        # Track attack patterns
+        pattern_key = f"{attack_type}_{threat_level.name_str if hasattr(threat_level, 'name_str') else str(threat_level)}"
+        self.attack_patterns[pattern_key] = self.attack_patterns.get(pattern_key, 0) + 1
+        
+        # Keep only recent history (last 1000 entries)
+        if len(self.deception_history) > 1000:
+            self.deception_history = self.deception_history[-1000:]
+    
+    def get_masking_stats(self) -> Dict[str, Any]:
+        """Get statistics about masking operations."""
+        return self.get_attack_statistics()
+    
     def update_placebo_templates(self, strategy: MaskingStrategy, new_templates: List[Dict[str, Any]]) -> None:
         """Update placebo templates for a specific strategy."""
         if strategy in self.placebo_templates:
