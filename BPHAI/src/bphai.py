@@ -326,6 +326,10 @@ class BPHAI:
             "confidence": 0.0
         }
         
+        # Use overall_threat_level from the aggregated response as default
+        if hasattr(result, 'overall_threat_level'):
+            threat_assessment["threat_level"] = result.overall_threat_level
+        
         if hasattr(result, 'rnu_responses'):
             # Look for security assessment from Security RNU
             for rnu_response in result.rnu_responses:
